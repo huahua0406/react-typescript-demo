@@ -1,9 +1,10 @@
 import React from 'react'
-import { Layout, Menu, Breadcrumb } from 'antd'
+import { Layout, Menu } from 'antd'
 import logo from '../logo.svg';
 import { Switch, Route, Redirect } from 'react-router-dom'
 import Home from '@/pages/Home'
 import Test from '@/pages/Test'
+import TodoList from '@/pages/TodoList'
 
 const { Header, Content, Footer } = Layout
 
@@ -24,8 +25,8 @@ class MyLayout extends React.Component<any, IState<object>> {
                 name:'test'
             },
             {
-                key:'/nav3',
-                name:'nav3'
+                key:'/todolist',
+                name:'todolist'
             }
         ],
 		current: ''
@@ -58,16 +59,12 @@ class MyLayout extends React.Component<any, IState<object>> {
                         }
 					</Menu>
 				</Header>
-				<Content className="site-layout" style={{ padding: '0 50px', marginTop: 64 }}>
-					<Breadcrumb style={{ margin: '16px 0' }}>
-						<Breadcrumb.Item>Home</Breadcrumb.Item>
-						<Breadcrumb.Item>List</Breadcrumb.Item>
-						<Breadcrumb.Item>App</Breadcrumb.Item>
-					</Breadcrumb>
+				<Content className="site-layout" style={{ padding: '0 50px', marginTop: 80 }}>
 					<div className="site-layout-background" style={{ padding: 24, minHeight: 380 }}>
                         <Switch>
                             <Route path="/home" component={Home}></Route>
                             <Route path="/test" component={Test}></Route>
+                            <Route path="/todolist" component={TodoList}></Route>
                             <Route path="*" render={() => <Redirect to="/404" />}/>
                         </Switch>
 					</div>

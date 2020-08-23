@@ -44,6 +44,7 @@
     ]
   },
   "devDependencies": {
+    "compression-webpack-plugin": "^4.0.1",
     "customize-cra": "^1.0.0",
     "react-app-rewired": "^2.1.6",
     "redux-devtools-extension": "^2.13.8"
