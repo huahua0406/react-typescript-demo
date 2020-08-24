@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios'
-import { List, Typography, Button, Input } from 'antd';
-import { DeleteOutlined } from '@ant-design/icons'
-const { Text } = Typography;
+import { List, Input } from 'antd';
+import TodoItem from './TodoItem'
 const { Search } = Input;
 
 interface IProps {
-    title?: string
+    title: string
 };
 
 
@@ -31,25 +30,6 @@ interface TodoItem {
 // or
 const Todos: Array<TodoItem> = []
 
-
-
-function TodoItem(props: any){
-    const {completed, title, id, deleteItem, changeItem} = props
-    const handleClick = (id: number) => {
-        changeItem(id)
-    }
-    const handleDeleteItem  = (id: number) => {
-        deleteItem(id)
-    }
-
-    return(
-        <div onDoubleClick={() => handleClick(id)} 
-            style={{cursor: 'pointer'}}>
-            <Text delete={completed}>{title}</Text>
-            <Button type="primary" icon={<DeleteOutlined />} onClick={() => handleDeleteItem(id)}></Button>
-        </div>
-    )
-}
 
 
 

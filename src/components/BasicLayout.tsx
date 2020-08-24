@@ -3,8 +3,8 @@ import { Layout, Menu } from 'antd'
 import logo from '../logo.svg';
 import { Switch, Route, Redirect } from 'react-router-dom'
 import Home from '@/pages/Home'
-import Test from '@/pages/Test'
-import TodoList from '@/pages/TodoList'
+import CounterDemo from '@/pages/counter'
+import TodoList from '@/pages/todoList/TodoList'
 
 const { Header, Content, Footer } = Layout
 
@@ -13,7 +13,7 @@ interface IState<T> {
 	current: string
 }
 
-class MyLayout extends React.Component<any, IState<object>> {
+class BasicLayout extends React.Component<any, IState<object>> {
 	public state: IState<object> = {
 		menus: [
             {
@@ -21,8 +21,8 @@ class MyLayout extends React.Component<any, IState<object>> {
                 name:'home'
             },
             {
-                key:'/test',
-                name:'test'
+                key:'/counter',
+                name:'counter'
             },
             {
                 key:'/todolist',
@@ -63,7 +63,7 @@ class MyLayout extends React.Component<any, IState<object>> {
 					<div className="site-layout-background" style={{ padding: 24, minHeight: 380 }}>
                         <Switch>
                             <Route path="/home" component={Home}></Route>
-                            <Route path="/test" component={Test}></Route>
+                            <Route path="/counter" component={CounterDemo}></Route>
                             <Route path="/todolist" component={TodoList}></Route>
                             <Route path="*" render={() => <Redirect to="/404" />}/>
                         </Switch>
@@ -75,4 +75,4 @@ class MyLayout extends React.Component<any, IState<object>> {
 	}
 }
 
-export default MyLayout
+export default BasicLayout

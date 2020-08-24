@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
-import { decrement, increment } from '../store/actions/counter';
+import { decrement, increment } from '../../store/actions/counter';
 
 // 创建类型接口
 export interface IProps {
