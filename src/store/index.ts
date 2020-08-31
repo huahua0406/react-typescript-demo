@@ -8,7 +8,7 @@ const middlewares = [thunk]
 const store = createStore(rootReducer, composeWithDevTools(
     applyMiddleware(...middlewares),
 ));
-console.log(store.getState());
+console.log('store===', store.getState());
 export default store
 
 

@@ -1,7 +1,8 @@
 import React from 'react'
 import { Form, Input, Button, Checkbox } from 'antd'
+import { Dispatch } from 'redux';
 import { connect } from 'react-redux'
-import { login } from '@/store/actions/user'
+import { login as loginAction } from '@/store/actions/user'
 
 const layout = {
 	labelCol: { span: 8 },
@@ -30,12 +31,11 @@ class Login extends React.Component<any, IState> {
 		console.log('Success:', values)
 		console.log('props===', this.props)
         const { login, history } = this.props
-        // history.push('/home')
 		login({
 			username: values.username.trim(),
 			password: values.password.trim()
 		}).then((res: any) => {
-            console.log(res)
+            console.log(res, /res/)
             history.push('/home')
         }).catch((err: any) => {
             console.log(err)
@@ -130,4 +130,19 @@ class Login extends React.Component<any, IState> {
 //   );
 // };
 
-export default connect((state: any) => state.user, { login })(Login)
+// https://cloud.tencent.com/developer/ask/213016/answer/328574
+// https://www.jianshu.com/p/caf0c3d2ebc4
+
+
+const mapStateToProps = (state: any) => ({
+    user: state.user
+})
+
+const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
+    login: (data: any) => dispatch(loginAction(data))
+  })
+export default connect(mapStateToProps, mapDispatchToProps)(Login)
+
+
+// 简写
+// export default connect((state: any) => state.user, { login: loginAction })(Login)
