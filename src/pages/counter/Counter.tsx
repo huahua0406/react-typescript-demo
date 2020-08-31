@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
-import { decrement, increment } from '../../store/actions/counter';
+import { decrement, increment } from '@/store/actions/counter';
 
 // 创建类型接口
 export interface IProps {
@@ -40,8 +40,8 @@ const mapStateToProps = (state: any) => ({
 })
 // 将 对应action 插入到组件的 props 中
 const mapDispatchToProps = (dispatch: Dispatch) => ({
-    onDecrement: () => dispatch(decrement()),
-    onIncrement: () => dispatch(increment())
+    onDecrement: (num: number) => dispatch(decrement(num)),
+    onIncrement: (num: number) => dispatch(increment(num))
 })
 // 使用 connect 高阶组件对 Counter 进行包裹
 export default connect(mapStateToProps, mapDispatchToProps)(Counter);
