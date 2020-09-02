@@ -1,5 +1,8 @@
 import React from 'react';
 import { renderRoutes } from 'react-router-config';
+interface IProps {
+    route: any
+}
 
-const BlankLayout = ({ route }: any) => ( <> { renderRoutes(route.routes) } </>)
-export default BlankLayout;
+const BlankLayout: React.FC <IProps> = ({ route }) => ( <> { renderRoutes(route.routes) } </>)
+export default React.memo(BlankLayout);

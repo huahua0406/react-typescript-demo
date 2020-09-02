@@ -1,12 +1,13 @@
-import React from "react";
+import React from 'react'
 import Counter from './Counter'
 
-const CounterWrap: React.FC = () => {
-    return (
-        <div>
-            <Counter value={0}/>
-        </div>
-    )
+const CounterWrapper: React.FC = (props: any) => {
+	console.log('props: ', props)
+	return (
+		<div>
+			<Counter value={0} />
+		</div>
+	)
 }
 
-export default CounterWrap;
+export default CounterWrapper

@@ -1,11 +1,9 @@
 import React from 'react'
 import { Button, Table, Modal, Form, Input, Radio } from 'antd'
-import { ColumnsType } from "antd/es/table";
+import { ColumnsType } from 'antd/es/table'
 import { withRouter } from 'react-router-dom'
 import DocumentTitle from 'react-document-title'
 import * as Api from '@/api'
-
-
 
 interface Values {
 	title: string
@@ -14,10 +12,10 @@ interface Values {
 }
 
 interface User {
-    id: number;
-    name: string;
-    phone: string;
-    website: string
+	id: number
+	name: string
+	phone: string
+	website: string
 }
 
 interface IProps {
@@ -26,52 +24,50 @@ interface IProps {
 	onCancel: () => void
 }
 
-interface IState{
+interface IState {
 	list: User[]
 	visible: boolean
 }
 
-
 const columns: ColumnsType<User> = [
-    {
-        key: 'id',
-        title: 'ID',
-        dataIndex: 'id',
-    },
-    {
-        key: 'name',
-        title: 'Name',
-        dataIndex: 'name',
-    },
-    {
-        key: 'phone',
-        title: '手机',
-        dataIndex: 'phone',
-    },
-    {
-        key: 'website',
-        title: '网站',
-        dataIndex: 'website',
-    }
-];
-
+	{
+		key: 'id',
+		title: 'ID',
+		dataIndex: 'id'
+	},
+	{
+		key: 'name',
+		title: 'Name',
+		dataIndex: 'name'
+	},
+	{
+		key: 'phone',
+		title: '手机',
+		dataIndex: 'phone'
+	},
+	{
+		key: 'website',
+		title: '网站',
+		dataIndex: 'website'
+	}
+]
 
 const CreateForm: React.FC<IProps> = ({ visible, onCreate, onCancel }) => {
-    const [form] = Form.useForm()
-    const handleSubmit = () => {
-        form.validateFields()
-        .then((values: any) => {
-            onCreate(values)
-        })
-        .catch((info) => {
-            console.log('Validate Failed:', info)
-        })
-    }
+	const [form] = Form.useForm()
+	const handleSubmit = () => {
+		form.validateFields()
+			.then((values: any) => {
+				onCreate(values)
+			})
+			.catch((info: any) => {
+				console.log('Validate Failed:', info)
+			})
+	}
 
-    const handleCancel = () => {
-        form.resetFields();
-        onCancel()
-    }
+	const handleCancel = () => {
+		form.resetFields()
+		onCancel()
+	}
 	return (
 		<Modal
 			visible={visible}
@@ -104,22 +100,22 @@ const CreateForm: React.FC<IProps> = ({ visible, onCreate, onCancel }) => {
 @(withRouter as any)
 class Home extends React.Component<any, IState> {
 	public state = {
-        list: [],
+		list: [],
 		visible: false
-    }
-    
-    public onCreate = (values: any) => {
-        console.log('Received values of form: ', values);
-        this.setState({visible: true})
-    }
+	}
 
-    public onCancel = () => {
-        this.setState({visible: false})
-    }
+	public onCreate = (values: any) => {
+		console.log('Received values of form: ', values)
+		this.setState({ visible: true })
+	}
 
-    public handleOpen = () => {
-        this.setState({visible: true})
-    }
+	public onCancel = () => {
+		this.setState({ visible: false })
+	}
+
+	public handleOpen = () => {
+		this.setState({ visible: true })
+	}
 
 	public componentDidMount() {
 		Api.getUserList().then((res: any) => {
@@ -132,32 +128,24 @@ class Home extends React.Component<any, IState> {
 		return (
 			<DocumentTitle title={'首页'}>
 				<div>
-                    <Button
-                        type="primary"
-                        onClick={this.handleOpen}>
-                        New Collection
-                    </Button>
-                    <Table
-                        bordered
-                        pagination={false}
-                        dataSource={list}
-                        columns={columns}
-                        rowKey={(record: any) => record.id}
-                    />
+					<Button type="primary" onClick={this.handleOpen}>
+						新增用户
+					</Button>
+					<Table
+						bordered
+						pagination={false}
+						dataSource={list}
+						columns={columns}
+						rowKey={(record: any) => record.id}
+					/>
 
-                    {/* <Table<User> columns={columns} dataSource={list} /> */}
-                    
-                    <CreateForm
-                        visible={visible}
-                        onCreate={this.onCreate}
-                        onCancel={this.onCancel}
-                    />
-                </div>
+					{/* <Table<User> columns={columns} dataSource={list} /> */}
+
+					<CreateForm visible={visible} onCreate={this.onCreate} onCancel={this.onCancel} />
+				</div>
 			</DocumentTitle>
 		)
 	}
 }
-
-// export default withRouter(Home);
 
 export default Home
