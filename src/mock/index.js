@@ -1,4 +1,8 @@
 import Mock from 'mockjs' // 引入mockjs
+// 配置Ajax请求延时，可用来测试网络延迟大时项目中一些效果
+Mock.setup({
+    timeout: 1000
+})
 const Random = Mock.Random // Mock.Random 是一个工具类，用于生成各种随机数据
  
 let data = [] // 用于接受生成数据的数组
