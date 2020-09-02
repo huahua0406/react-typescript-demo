@@ -2,12 +2,12 @@ import React from 'react'
 import { Redirect } from 'react-router-dom'
 // import BlankLayout from '@/components/BlankLayout'
 import BasicLayout from '@/components/BasicLayout'
-import Login from '@/pages/Login'
+import Login from '@/pages/login/Login'
 import NoFound from '@/pages/NoFound'
 
 import Home from '@/pages/Home'
 import CounterDemo from '@/pages/counter'
-import TodoList from '@/pages/todoList/TodoList'
+import TodoList from '@/pages/todo/TodoList'
 
 const routes = [
     {

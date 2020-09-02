@@ -3,7 +3,7 @@ import axios from 'axios'
 // 这里取决于登录的时候将 token 存储在哪里
 const token = localStorage.getItem('token')
 
-const baseUrl = process.env.NODE_ENV === 'production'?'/api':'/api'
+const baseUrl = process.env.NODE_ENV === 'production'?'/api':'/mock'
 
 const axiosRequest = axios.create({
     baseURL: baseUrl,

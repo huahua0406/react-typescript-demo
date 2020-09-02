@@ -3,8 +3,8 @@ import request from '@/utils/request'
 // 登录
 export function login(data) {
 	return request({
-		url: `https://fastmock.site/mock/d451d648bf7d24e6bcfcd03fd9bfe605/react-tutorials/api/login`,
-		method: 'post',
+		url: `/test`,
+		method: 'get',
 		data
 	})
 }
