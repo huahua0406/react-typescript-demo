@@ -3,7 +3,7 @@ import { Form, Input, Button, Checkbox } from 'antd'
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux'
 import { login as loginAction } from '@/store/actions/user'
-import mockData from '@/mock';
+import '@/mock';
 
 const layout = {
 	labelCol: { span: 8 },
@@ -92,11 +92,13 @@ const mapStateToProps = (state: any) => ({
     user: state.user
 })
 
+// mapDispatchToProps 参数为对象或者函数 https://react-redux.js.org/api#connect
+// function
 const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
     login: (data: any) => dispatch(loginAction(data))
-  })
+})
 export default connect(mapStateToProps, mapDispatchToProps)(Login)
 
 
-// 简写
+// object
 // export default connect((state: any) => state.user, { login: loginAction })(Login)

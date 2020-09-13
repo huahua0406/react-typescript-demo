@@ -1,22 +1,10 @@
-import request from '@/utils/request'
+import * as user from './uesr'
+import * as todo from './todo'
+import * as home from './home'
 
-// 登录
-export function login(data) {
-	return request({
-		url: `/test`,
-		method: 'get',
-		data
-	})
+export default {
+    ...user,
+    ...todo,
+    ...home
 }
 
-export function logout() {
-    // todo
-}
-
-export function getUserList(params) {
-	return request({
-		url: `https://jsonplaceholder.typicode.com/users`,
-		method: 'get',
-		params
-	})
-}

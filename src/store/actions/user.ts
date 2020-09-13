@@ -1,5 +1,5 @@
 import * as types from '../constants';
-import * as Api from '@/api'
+import Api from '@/api'
 import { Dispatch } from 'redux';
 
 export const setUserInfo = (data: any) => {
@@ -19,7 +19,7 @@ export const clearUserInfo = () => {
 export const login = (data: any) => (dispatch: Dispatch) => {
     return new Promise((resolve, reject) => {
         Api.login(data).then((res: any) => {
-            if(res.data.code===200){
+            if(res.data.code===0){
                 dispatch(setUserInfo(res.data))
                 resolve(res)
             }else{

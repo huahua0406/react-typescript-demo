@@ -3,7 +3,8 @@ import { Button, Table, Modal, Form, Input, Radio } from 'antd'
 import { ColumnsType } from 'antd/es/table'
 import { withRouter } from 'react-router-dom'
 import DocumentTitle from 'react-document-title'
-import * as Api from '@/api'
+import Api from '@/api'
+console.log(Api);
 
 interface Values {
 	title: string
@@ -46,9 +47,9 @@ const columns: ColumnsType<User> = [
 		dataIndex: 'phone'
 	},
 	{
-		key: 'website',
-		title: '网站',
-		dataIndex: 'website'
+		key: 'email',
+		title: 'email',
+		dataIndex: 'email'
 	}
 ]
 
@@ -119,8 +120,8 @@ class Home extends React.Component<any, IState> {
 
 	public componentDidMount() {
 		Api.getUserList().then((res: any) => {
-			console.log(res)
-			this.setState({ list: res.data })
+			console.log(res, /home/)
+			this.setState({ list: res.data.list })
 		})
 	}
 	public render() {
